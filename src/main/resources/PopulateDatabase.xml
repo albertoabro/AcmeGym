@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2018 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<!-- User accounts -->
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="827ccb0eea8a706c4c34a16891f84e7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="accountNonLocked" value="true"/>
+	</bean>
+
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="customer1" />
+		<property name="password" value="827ccb0eea8a706c4c34a16891f84e7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="accountNonLocked" value="true"/>
+	</bean>
+
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="trainer1" />
+		<property name="password" value="827ccb0eea8a706c4c34a16891f84e7b" />
+		<property name="accountNonLocked" value="true"/>
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="TRAINER" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="manager1" />
+		<property name="password" value="827ccb0eea8a706c4c34a16891f84e7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="accountNonLocked" value="true"/>
+	</bean>
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="customer2" />
+		<property name="password" value="827ccb0eea8a706c4c34a16891f84e7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="accountNonLocked" value="true"/>
+	</bean>
+
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="trainer2" />
+		<property name="password" value="827ccb0eea8a706c4c34a16891f84e7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="TRAINER" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="accountNonLocked" value="true"/>
+	</bean>
+
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="manager2" />
+		<property name="password" value="827ccb0eea8a706c4c34a16891f84e7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="accountNonLocked" value="true"/>
+	</bean>
+	
+
+	<bean id="userAccount8" class="security.UserAccount">
+		<property name="username" value="admin2" />
+		<property name="password" value="827ccb0eea8a706c4c34a16891f84e7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="accountNonLocked" value="true"/>
+	</bean>
+
+	<!-- Managers -->
+	<bean id="manager1" class="domain.Manager">
+		<property name="name" value="manager1"/>
+		<property name="lastname" value="none"/>
+		<property name="email" value="manager1@mail.com"/>
+		<property name="phone" value="+34111111115"/>
+		<property name="userAccount" ref="userAccount4"/>
+		<property name="managerGyms">
+			<list>
+				<ref bean="gym1"/>
+			</list>
+		</property>
+		<property name="managerAdmin" ref="admin1"/>
+	</bean>
+
+	<bean id="manager2" class="domain.Manager">
+		<property name="name" value="manager2"/>
+		<property name="lastname" value="none"/>
+		<property name="email" value="manager2@mail.com"/>
+		<property name="phone" value="+34111111119"/>
+		<property name="userAccount" ref="userAccount7"/>
+		<property name="managerGyms">
+			<list>
+				<ref bean="gym2"/>
+			</list>
+		</property>
+		<property name="managerAdmin" ref="admin2"/>
+	</bean>
+
+	<!-- Admins -->
+	<bean id="admin1" class="domain.Admin">
+		<property name="name" value="Admin 1"/>
+		<property name="lastname" value="none"/>
+		<property name="email" value="admin1@mail.com"/>
+		<property name="phone" value="+34111111111"/>
+		<property name="userAccount" ref="userAccount1"/>
+		<property name="adminManagers">
+			<list>
+				<ref bean="manager1"/>
+			</list>
+		</property>
+		<property name="adminGyms">
+			<list>
+				<ref bean="gym1"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="admin2" class="domain.Admin">
+		<property name="name" value="Admin 2"/>
+		<property name="lastname" value="none"/>
+		<property name="email" value="admin2@mail.com"/>
+		<property name="phone" value="+34111111118"/>
+		<property name="userAccount" ref="userAccount8"/>
+		<property name="adminManagers">
+			<list>
+				<ref bean="manager2"/>
+			</list>
+		</property>
+		<property name="adminGyms">
+			<list>
+				<ref bean="gym2"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Customers -->
+	<bean id="customer1" class="domain.Customer">
+		<property name="name" value="customer1"/>
+		<property name="lastname" value="none"/>
+		<property name="email" value="customer1@mail.com"/>
+		<property name="phone" value="+34111111112"/>
+		<property name="userAccount" ref="userAccount2"/>
+		<property name="customerCreditCards">
+			<list>
+				<ref bean="creditCard1"/>
+			</list>
+		</property>
+		<property name="customerRegistrations">
+			<list>
+				<ref bean="registration1"/>
+			</list>
+		</property>
+		<property name="customerActivities">
+			<list>
+				<ref bean="activity1"/>
+			</list>
+		</property>
+	</bean>
+	
+
+	<!-- Trainers -->
+	<bean id="trainer1" class="domain.Trainer">
+		<property name="name" value="trainer1"/>
+		<property name="lastname" value="none"/>
+		<property name="email" value="trainer1@mail.com"/>
+		<property name="phone" value="+34111111114"/>
+		<property name="userAccount" ref="userAccount3"/>
+		<property name="trainerGyms">
+			<list>
+				<ref bean="gym1"/>
+			</list>
+		</property>
+		<property name="trainerCvs">
+			<list>
+				<ref bean="cv1"/>
+			</list>
+		</property>
+		<property name="trainerActivities">
+			<list>
+				<ref bean="activity1"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="trainer2" class="domain.Trainer">
+		<property name="name" value="trainer2"/>
+		<property name="lastname" value="none"/>
+		<property name="email" value="trainer2@mail.com"/>
+		<property name="phone" value="+3422222220"/>
+		<property name="userAccount" ref="userAccount6"/>
+		<property name="trainerGyms">
+			<list>
+				<ref bean="gym1"/>
+			</list>
+		</property>
+		<property name="trainerCvs">
+			<list>
+				<ref bean="cv1"/>
+			</list>
+		</property>
+		<property name="trainerActivities">
+			<list>
+				<ref bean="activity1"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Credit Cards -->
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="owner" value="customer1"/>
+		<property name="tradeMark" value="viss"/>
+		<property name="number" value="4716807178084641"/>
+		<property name="cvv" value="111"/>
+		<property name="year" value="2024"/>
+		<property name="month" value="12"/>
+		<property name="creditCardCustomer" ref="customer1"/>
+	</bean>
+	
+	<!-- Social Identities -->
+	<bean id="social1" class="domain.SocialIdentity">
+		<property name="name" value="social1"/>
+		<property name="nick" value="trainer1"/>
+		<property name="url" value="http://localhost:8080"/>
+		<property name="socialIdentitiesCV" ref="cv1"/>
+ 	</bean>
+	
+	<!-- CVs -->
+	<bean id="cv1" class="domain.CV">
+		<property name="name" value="cv1"/>
+		<property name="experience" value="any"/>
+		<property name="training" value="Master in personal coaching"/>
+		<property name="cvTrainer" ref="trainer1"/>
+		<property name="cvSocialIdentities">
+			<list>
+				<ref bean="social1"/>
+			</list>
+		</property>
+		<property name="specialties">
+			<list>
+				<ref bean="speciality1"/>
+				<ref bean="speciality2" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Steps -->
+	<bean id="step1" class="domain.Step">
+		<property name="title" value="stretching1"/>
+		<property name="tutorial" value="http://localhost:8080"/>
+		<property name="stepTrainings" ref="training1"/>
+	</bean>
+	
+	<!-- Bills -->
+	<bean id="bill1" class="domain.Bill">
+		<property name="date" value="03/05/2023"/>
+		<property name="year" value="2023"/>
+		<property name="VAT" value="ESX1234567X"/>
+		<property name="amount" value="25.50"/>
+		<property name="trimester" value="2"/>
+		<property name="deleted" value="false"/>
+		<property name="billRegistration" ref="registration1"/>
+ 	</bean>
+
+	<!-- Registrations -->
+	<bean id="registration1" class="domain.Registration">
+		<property name="registrationCustomer" ref="customer1"/>
+		<property name="registrationGym" ref="gym1"/>
+		<property name="registrationBills">
+			<list>
+				<ref bean="bill1"/>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Training -->
+	<bean id="training1" class="domain.Training">
+		<property name="title" value="First stretching"/>
+		<property name="description" value="any"/>
+		<property name="trainingGyms">
+			<list>
+				<ref bean="gym1"/>
+				<ref bean="gym2"/>
+			</list>
+		</property>
+		<property name="trainingSteps">
+			<list>
+				<ref bean="step1"/>
+			</list>
+		</property>
+		<property name="trainingAnnotations">
+			<list>
+				<ref bean="annotation1"/>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Activities -->
+	<bean id="activity1" class="domain.Activity">
+		<property name="title" value="Spinning"/>
+		<property name="description" value="any"/>
+		<property name="capacity" value="20"/>
+		<property name="day" value="monday"/>
+		<property name="photo" value="http://localhost:8080"/>
+		<property name="startingTime" value="11:00"/>
+		<property name="endingTime" value="13:00"/>
+		<property name="deleted" value="false"/>
+		<property name="activityCustomers">
+			<list>
+				<ref bean="customer1"/>
+			</list>
+		</property>
+		<property name="activityGym" ref="gym1"/>
+		<property name="activityTrainers">
+			<list>
+				<ref bean="trainer1"/>
+			</list>
+		</property>
+		<property name="activityAnnotations">
+			<list>
+				<ref bean="annotation2"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="activity2" class="domain.Activity">
+		<property name="title" value="Tennis"/>
+		<property name="description" value="any"/>
+		<property name="capacity" value="20"/>
+		<property name="day" value="friday"/>
+		<property name="photo" value="http://localhost:8080"/>
+		<property name="startingTime" value="11:00"/>
+		<property name="endingTime" value="13:00"/>
+		<property name="deleted" value="true"/>
+		<property name="activityGym" ref="gym1"/>
+	</bean>
+
+	<bean id="activity3" class="domain.Activity">
+		<property name="title" value="Padel"/>
+		<property name="description" value="any"/>
+		<property name="capacity" value="20"/>
+		<property name="day" value="friday"/>
+		<property name="photo" value="http://localhost:8080"/>
+		<property name="startingTime" value="11:00"/>
+		<property name="endingTime" value="13:00"/>
+		<property name="deleted" value="true"/>
+		<property name="activityGym" ref="gym2"/>
+	</bean>
+
+	<!-- Gyms -->
+	<bean id="gym1" class="domain.Gym">
+		<property name="name" value="gym1"/>
+		<property name="logo" value="http://localhost:8080"/>
+		<property name="address" value="address1"/>
+		<property name="deleted" value="false"/>
+		<property name="price" value="25.50"/>
+
+		<property name="gymActivities">
+			<list>
+				<ref bean="activity1"/>
+				<ref bean="activity2"/>
+			</list>
+		</property>
+		<property name="gymTrainings">
+			<list>
+				<ref bean="training1"/>
+			</list>
+		</property>
+		<property name="gymAnnotations">
+			<list>
+				<ref bean="annotation3"/>
+			</list>
+		</property>
+		<property name="gymManagers">
+			<list>
+				<ref bean="manager1"/>
+			</list>
+		</property>
+		<property name="gymAdmins">
+			<list>
+				<ref bean="admin1"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="gym2" class="domain.Gym">
+		<property name="name" value="gym2"/>
+		<property name="logo" value="http://localhost:8080"/>
+		<property name="address" value="address2"/>
+		<property name="deleted" value="false"/>
+		<property name="price" value="25.50"/>
+
+		<property name="gymActivities">
+			<list>
+				<ref bean="activity3"/>
+			</list>
+		</property>
+		<property name="gymTrainings">
+			<list>
+				<ref bean="training1"/>
+			</list>
+		</property>
+		<property name="gymManagers">
+			<list>
+				<ref bean="manager1"/>
+			</list>
+		</property>
+		<property name="gymAdmins">
+			<list>
+				<ref bean="admin2"/>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Annotations -->
+	<bean id="annotation1" class="domain.Annotation">
+		<property name="date" value="03/05/2023"/>
+		<property name="score" value="1"/>
+		<property name="text" value="Its soo easy"/>
+		<property name="annotationTraining" ref="training1"/>
+		<property name="annotationPerson" ref="customer1"/>
+		<property name="censored" ref="censoredWords"/>
+	</bean>
+
+	<bean id="annotation2" class="domain.Annotation">
+		<property name="date" value="03/05/2023"/>
+		<property name="score" value="3"/>
+		<property name="text" value="Spinning class its soo cool!!"/>
+		<property name="annotationActivity" ref="activity1"/>
+		<property name="annotationPerson" ref="customer1"/>
+		<property name="censored" ref="censoredWords"/>
+	</bean>
+
+	<bean id="annotation3" class="domain.Annotation">
+		<property name="date" value="03/05/2023"/>
+		<property name="score" value="2"/>
+		<property name="text" value="The gym has only one activity"/>
+		<property name="annotationGym" ref="gym1"/>
+		<property name="annotationPerson" ref="customer1"/>
+		<property name="censored" ref="censoredWords"/>
+	</bean>
+
+	<!-- Censored Words -->
+	<bean id="censoredWords" class="domain.CensoredWords">
+		<property name="censored" value="any2"/>
+	</bean>
+
+	<!-- Specialities -->
+	<bean id="speciality1" class="domain.Speciality">
+		<property name="speciality" value="Spinning"/>
+	</bean>
+
+	<bean id="speciality2" class="domain.Speciality">
+		<property name="speciality" value="Personal Trainer"/>
+	</bean>
+</beans>

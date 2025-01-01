@@ -1,0 +1,37 @@
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="training/list" extends="master.page">
+        <put-attribute name="title" value="Entrenamientos" />
+        <put-attribute name="body" value="/views/training/list.jsp" />
+    </definition>
+
+    <definition name="training/manager/list" extends="master.page">
+        <put-attribute name="title" value="Gerente: Entrenamientos" />
+        <put-attribute name="body" value="/views/training/list.jsp" />
+    </definition>
+
+    <definition name="training/manager/create" extends="master.page">
+        <put-attribute name="title" value="Manager: Trainings" />
+        <put-attribute name="body" value="/views/training/edit.jsp" />
+    </definition>
+
+    <definition name="training/manager/edit" extends="master.page">
+        <put-attribute name="title" value="Manager: Trainings" />
+        <put-attribute name="body" value="/views/training/edit.jsp" />
+    </definition>
+
+    <definition name="training/manager/delete" extends="master.page">
+        <put-attribute name="title" value="Manager: Trainings" />
+        <put-attribute name="body" value="/views/training/edit.jsp" />
+    </definition>
+
+    <definition name="training/search" extends="master.page">
+        <put-attribute name="title" value="Entrenamientos" />
+        <put-attribute name="body" value="/views/training/list.jsp" />
+    </definition>
+
+</tiles-definitions>

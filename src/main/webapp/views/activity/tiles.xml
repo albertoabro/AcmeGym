@@ -1,0 +1,37 @@
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="activity/list" extends="master.page">
+        <put-attribute name="title" value="Activity List" />
+        <put-attribute name="body" value="/views/activity/list.jsp" />
+    </definition>
+
+    <definition name="activity/edit" extends="master.page">
+        <put-attribute name="title" value="Edit Activity" />
+        <put-attribute name="body" value="/views/activity/edit.jsp" />
+    </definition>
+
+    <definition name="activity/listByGym" extends="master.page">
+        <put-attribute name="title" value="Activity List" />
+        <put-attribute name="body" value="/views/activity/list.jsp" />
+    </definition>
+
+    <definition name="activity/manager/listByGym" extends="master.page">
+        <put-attribute name="title" value="Manager Activity List" />
+        <put-attribute name="body" value="/views/activity/list.jsp" />
+    </definition>
+
+    <definition name="activity/manager/listByGym" extends="master.page">
+        <put-attribute name="title" value="Manager Activity List" />
+        <put-attribute name="body" value="/views/activity/list.jsp" />
+    </definition>
+
+    <definition name="activity/search" extends="master.page">
+        <put-attribute name="title" value="Activity List" />
+        <put-attribute name="body" value="/views/activity/list.jsp" />
+    </definition>
+
+</tiles-definitions>
